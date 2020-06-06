@@ -22,6 +22,7 @@ public class ReApp_V2 extends Application {
     public static Stage stage = null;
     @Override
     public void start(Stage stage) throws Exception {
+        
         Parent root = FXMLLoader.load(getClass().getResource("/Views/RepertoireView.fxml"));
         
         Scene scene = new Scene(root);
