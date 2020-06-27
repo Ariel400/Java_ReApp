@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="Pane_Ajout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Ajout_ContactController">
+   <children>
+      <Circle fx:id="img_circle" fill="DODGERBLUE" layoutX="168.0" layoutY="67.0" radius="67.0" stroke="BLACK" strokeType="INSIDE" />
+      <JFXTextField layoutX="26.0" layoutY="155.0" prefHeight="25.0" prefWidth="255.0" promptText="Nom" />
+      <JFXTextField layoutX="26.0" layoutY="210.0" prefHeight="25.0" prefWidth="255.0" promptText="Prenoms" />
+      <JFXComboBox layoutX="45.0" layoutY="261.0" promptText="Mobile" />
+      <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="15.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/icons8_phone_48px_1.png" />
+         </image>
+      </ImageView>
+      <JFXTextField layoutX="125.0" layoutY="261.0" prefHeight="25.0" prefWidth="156.0" promptText="Numéro" />
+      <JFXTextField layoutX="50.0" layoutY="322.0" prefHeight="25.0" prefWidth="237.0" promptText="Adresse e-mail" />
+      <Text layoutX="45.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes" />
+      <JFXButton fx:id="BtnEnregistrer" layoutX="58.0" layoutY="515.0" style="-fx-background-color: #8c52ff;" text="Enregistrer" />
+      <JFXButton fx:id="BtnAnnuler" layoutX="209.0" layoutY="515.0" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: #7A7373;" text="Annuler" />
+      <JFXTextArea layoutX="84.0" layoutY="414.0" prefHeight="64.0" prefWidth="208.0" promptText="Description" />
+      <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="15.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/icons8_email_48px.png" />
+         </image>
+      </ImageView>
+      <JFXRadioButton layoutX="199.0" layoutY="380.0" text="Non" />
+      <JFXRadioButton layoutX="131.0" layoutY="380.0" text="Oui" />
+      <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="15.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/icons8_whatsapp_48px.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="46.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Whatsapp" wrappingWidth="60.478515625" />
+   </children>
+</Pane>
