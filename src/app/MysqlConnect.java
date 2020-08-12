@@ -14,7 +14,7 @@ import java.util.Properties;
  */
 public class MysqlConnect {
     private static final String DATABASE_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/repertoire";
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/repertoire?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "STevefox25@$";
     //private static final String MAX_POOL = "250";
@@ -40,7 +40,9 @@ public class MysqlConnect {
         if (connection == null) {
             try {
                 Class.forName(DATABASE_DRIVER);
+                System.out.println("Driver ok");
                 connection = DriverManager.getConnection(DATABASE_URL, getProperties());
+                System.out.println("Connexion établie");
             } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
             }

@@ -5,8 +5,6 @@
  */
 package app;
 
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +12,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.sql.*;/**
+/**
  * imp
  *
  * @author ariel
@@ -26,9 +24,6 @@ public class ReApp_V2 extends Application {
     MysqlConnect mysqlConnect = new MysqlConnect();
     
     
-   
-    
-    
     @Override
     public void start(Stage stage) throws Exception {
         
@@ -37,7 +32,7 @@ public class ReApp_V2 extends Application {
         stage.setScene(scene);
         ReApp_V2.stage = stage;
         stage.initStyle(StageStyle.TRANSPARENT);
-        
+        mysqlConnect.connect();
         stage.show();
     }
 

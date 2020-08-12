@@ -4,10 +4,13 @@
  * and open the template in the editor.
  */
 package Controllers;
-
+import app.MysqlConnect;
 import app.ReApp_V2;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
+
+
+import java.sql.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -16,12 +19,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.HBox;
+
+import javafx.fxml.FXMLLoader;
 
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 
@@ -36,38 +45,16 @@ public class RepertoireViewController implements Initializable {
     @FXML
     private AnchorPane AnchorPane;
     @FXML
-    private JFXListView<String> List_Contact;
+    private JFXListView<HBox> List_Contact ;
     @FXML
     private Circle img_circle;
     Image img126 = new Image("/Image/icons8_contacts_126px_1.png");
+    Image imgAlea = new Image("/Image/icons8_administrator_male_64px.png");
+    HBox hb; 
     
-    ObservableList<String> listView = FXCollections.observableArrayList("+22579707025","+22507070707","+22565656565"); //Exemples pour Listview
+    ObservableList<HBox> listView;
     
-//    static class Cell extends ListCell<String>
-//    {
-//        HBox hbox = new HBox();
-//        Button Btn_Del = new Button("Delete");
-//        Label No = new Label("");
-//        Pane pane = new Pane();
-//        Image img64 = new Image("/Image/icons8_contacts_126px_1 (Personnalisé).png");
-//        ImageView imgTest = new ImageView(img64);
-//        
-//        public Cell(){
-//            super();
-//            hbox.getChildren().addAll(hbox,Btn_Del,No,imgTest);
-//            hbox.setHgrow(pane, Priority.ALWAYS);
-//        }
-//        
-//        public void updateItem(String name,boolean empty){
-//                super.updateItem(name, empty);
-//                setText(null);
-//                setGraphic(null);
-//                if(name != null && !empty){
-//                    No.setText(name);
-//                    setGraphic(hbox);
-//                }          
-//            }
-//    }
+
     @FXML
     private JFXButton BtnModifier;
     @FXML
@@ -81,34 +68,38 @@ public class RepertoireViewController implements Initializable {
     private JFXButton BtnEnregistrer;
     @FXML
     private JFXButton BtnAnnuler;
+    @FXML
+    private JFXButton BtnNewContact1;
+    
+    MysqlConnect mysqlConnect = new MysqlConnect();
+    Connection conn;
+    Statement st;
+    ResultSet res;
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        img_circle.setFill(new ImagePattern(img126)); //Image par défaut du contact     
+        
+        Label lbl = new Label("Ariel Touré");
+        lbl.setFont(new Font("Arial",20));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Views/AffichList.fxml"));
+        hb = new HBox(new ImageView(imgAlea), lbl);
+        
+        hb.setSpacing(30);
+        
+        listView  = FXCollections.observableArrayList(hb); //Exemples pour Listview
+        img_circle.setFill(new ImagePattern(img126)); //Image par défaut du contact   
         List_Contact.setItems(listView);
-        //List_Contact.setCellFactory(param -> new Cell());
+        
+//        listView = FXCollections.observableArrayList();
+//        affiche(listView);
+        
+        
+//        List_Contact.setCellFactory(param -> new Cell());
             
     }    
-//    private void moveFenetre(){
-//        AnchorPane.setOnMousePressed((event) ->{
-//            xOffset = event.getScreenX();
-//            yOffset = event.getScreenY();
-//
-//        });
-//        AnchorPane.setOnMouseDragged((event) ->{
-//            ReApp_V2.stage.setX(event.getScreenX() - xOffset);
-//            ReApp_V2.stage.setY(event.getScreenY() - xOffset);
-//            ReApp_V2.stage.setOpacity(0.8f);
-//        });
-//        AnchorPane.setOnDragDone((event) ->{
-//            ReApp_V2.stage.setOpacity(1.0f);
-//        });
-//        
-//        AnchorPane.setOnMouseReleased((event) ->{
-//            ReApp_V2.stage.setOpacity(1.0f);
-//        });
-//    }
+
    
 
     @FXML
@@ -143,11 +134,24 @@ public class RepertoireViewController implements Initializable {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setX(event.getScreenX()- xOffset);
         stage.setY(event.getScreenY()- yOffset);
-                
-        
+                 
     }
 
-    
+    private void affiche(ObservableList<String> list){
+        try{
+            conn = mysqlConnect.connect();         
+            st = conn.createStatement();
+            res = st.executeQuery("SELECT Numero1_Contact FROM contact;");
+            while (res.next()){
+                list.add(
+                        new String(res.getString("Numero1_Contact"))
+                );
+            }
+           
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void ChargePaneAdd(ActionEvent event) {
@@ -156,6 +160,7 @@ public class RepertoireViewController implements Initializable {
 
     @FXML
     private void EnregistreRegistr(ActionEvent event) {
+//        Ajout_ContactController.AjouterP(Email, Nom_Contact, Prenom_Contact, Num1, Num2, Notes, img126);
         Pane_Ajout.setVisible(false);
     }
 
@@ -164,5 +169,7 @@ public class RepertoireViewController implements Initializable {
         Pane_Ajout.setVisible(false);
 
     } 
+
+    
     
 }
