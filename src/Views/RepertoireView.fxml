@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXListView?>
-<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
@@ -59,17 +58,17 @@
                   </LinearGradient>
                </focusColor>
             </JFXTextField>
-            <JFXButton alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="9.0" layoutY="280.0" prefHeight="25.0" prefWidth="37.0">
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="32.0" layoutY="280.0" prefHeight="25.0" prefWidth="37.0">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="HISTORY" />
                </graphic>
             </JFXButton>
-            <JFXButton alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="46.0" layoutY="280.0" prefHeight="25.0" prefWidth="37.0">
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="76.0" layoutY="280.0" prefHeight="25.0" prefWidth="37.0">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="USERS" />
                </graphic>
             </JFXButton>
-            <JFXButton alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="82.0" layoutY="280.0" prefHeight="25.0" prefWidth="37.0">
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="125.0" layoutY="280.0" prefHeight="25.0" prefWidth="37.0">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="USER" />
                </graphic>
@@ -115,10 +114,10 @@
          <children>
             <ImageView fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Image/icons8_whatsapp_48px.png" />
+                  <Image url="@../Image/icons8_telephone_48px.png" />
                </image>
             </ImageView>
-            <Text opacity="0.73" strokeType="OUTSIDE" strokeWidth="0.0" text="WhatsApp" wrappingWidth="188.13671875">
+            <Text opacity="0.73" strokeType="OUTSIDE" strokeWidth="0.0" text="+22501336163" wrappingWidth="188.13671875">
                <font>
                   <Font size="18.0" />
                </font>
@@ -158,33 +157,37 @@
       <Pane fx:id="Pane_Ajout" layoutX="491.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="341.0" style="-fx-background-color: white;" visible="false">
          <children>
             <Circle fx:id="img_circle1" fill="DODGERBLUE" layoutX="168.0" layoutY="67.0" radius="67.0" stroke="BLACK" strokeType="INSIDE" />
-            <JFXTextField layoutX="26.0" layoutY="155.0" prefHeight="25.0" prefWidth="255.0" promptText="Nom" />
-            <JFXTextField layoutX="26.0" layoutY="210.0" prefHeight="25.0" prefWidth="255.0" promptText="Prenoms" />
+            <JFXTextField fx:id="Nom_contact" layoutX="26.0" layoutY="155.0" prefHeight="25.0" prefWidth="255.0" promptText="Nom" />
+            <JFXTextField fx:id="prenom_contact" layoutX="26.0" layoutY="210.0" prefHeight="25.0" prefWidth="255.0" promptText="Prenoms" />
             <JFXComboBox layoutX="45.0" layoutY="261.0" promptText="Mobile" />
             <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="15.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Image/icons8_phone_48px_1.png" />
                </image>
             </ImageView>
-            <JFXTextField layoutX="125.0" layoutY="261.0" prefHeight="25.0" prefWidth="156.0" promptText="Numéro" />
-            <JFXTextField layoutX="50.0" layoutY="322.0" prefHeight="25.0" prefWidth="237.0" promptText="Adresse e-mail" />
-            <Text layoutX="45.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes:" />
+            <JFXTextField fx:id="numero1" layoutX="125.0" layoutY="261.0" prefHeight="25.0" prefWidth="156.0" promptText="Numéro 1" />
+            <JFXTextField fx:id="email_contact" layoutX="50.0" layoutY="365.0" prefHeight="25.0" prefWidth="237.0" promptText="Adresse e-mail" />
+            <Text layoutX="14.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mention:" />
             <JFXButton fx:id="BtnEnregistrer" layoutX="58.0" layoutY="515.0" onAction="#EnregistreRegistr" style="-fx-background-color: #8c52ff;" text="Enregistrer" />
             <JFXButton fx:id="BtnAnnuler" layoutX="209.0" layoutY="515.0" onAction="#AnnulerRegistr" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: #7A7373;" text="Annuler" />
-            <JFXTextArea layoutX="84.0" layoutY="414.0" prefHeight="64.0" prefWidth="208.0" promptText="Description" />
-            <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="15.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
+            <JFXTextArea fx:id="note_descr" layoutX="73.0" layoutY="415.0" prefHeight="64.0" prefWidth="208.0" promptText="Description" />
+            <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="15.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Image/icons8_email_48px.png" />
                </image>
             </ImageView>
-            <JFXRadioButton layoutX="199.0" layoutY="380.0" text="Non" />
-            <JFXRadioButton layoutX="131.0" layoutY="380.0" text="Oui" />
-            <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="15.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true">
+            <JFXButton fx:id="choix_img" layoutX="149.0" layoutY="55.0" onAction="#chooseImg" prefHeight="25.0" prefWidth="37.0">
+               <graphic>
+                  <FontAwesomeIcon fill="#6b6969" glyphName="CAMERA" />
+               </graphic>
+            </JFXButton>
+            <JFXTextField fx:id="numero11" layoutX="125.0" layoutY="302.0" prefHeight="25.0" prefWidth="156.0" promptText="Numéro 2" />
+            <JFXComboBox layoutX="45.0" layoutY="302.0" prefHeight="25.0" prefWidth="79.0" promptText="Tel" />
+            <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="15.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Image/icons8_whatsapp_48px.png" />
+                  <Image url="@../Image/icons8_telephone_48px.png" />
                </image>
             </ImageView>
-            <Text layoutX="46.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Whatsapp" wrappingWidth="60.478515625" />
          </children>
       </Pane>
       <Separator layoutX="488.0" layoutY="43.0" orientation="VERTICAL" prefHeight="569.0" prefWidth="0.0" />
